@@ -1,0 +1,213 @@
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  border: 1px solid black;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  /* background: #34495e; */
+  color: white;
+}
+
+td img {
+  width: 50px;
+  border-radius: 5px;
+}
+
+/* Buttons */
+button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Pay Fees Button */
+.p-btn {
+  background: #27ae60;
+  color: white;
+}
+
+.p-btn:hover {
+  background: #219150;
+}
+
+/* View Records Button */
+.submit-btn {
+  background: #2980b9;
+  color: white;
+}
+
+.submit-btn:hover {
+  background: #216a94;
+}
+
+/* Modal Background Overlay */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* Common Modal Box Style */
+#paymentForm,
+#viewRecordsModal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #333333;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+  width: 450px;
+  max-width: 90%;
+  z-index: 1000;
+}
+
+/* Modal Titles */
+#paymentForm h3,
+#viewRecordsModal h3 {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* Student Image */
+#student_pic {
+  display: block;
+  margin: 0 auto 15px auto;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 3px solid #ddd;
+}
+
+/* Payment Form Grid Layout */
+#payFeesForm {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 15px;
+}
+
+/* Labels */
+#payFeesForm label {
+  font-weight: bold;
+  /* color: #34495e; */
+  font-size: 14px;
+}
+
+/* Inputs */
+#payFeesForm input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #f9f9f9;
+}
+
+/* Make Roll No, Name & Pic Full Width */
+#roll_no,
+#student_name {
+  grid-column: span 2;
+}
+
+/* Fees Now (Last Row) Full Width */
+#fees_now {
+  grid-column: span 2;
+}
+
+/* Form Buttons */
+.form-buttons {
+  grid-column: span 2;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+#payFeesForm button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 5px;
+}
+
+/* Submit Button */
+#payFeesForm button[type="submit"] {
+  background: #27ae60;
+  color: white;
+}
+
+/* Close Button */
+#payFeesForm button[type="button"] {
+  background: #e74c3c;
+  color: white;
+}
+
+/* Button Hover Effects */
+#payFeesForm button:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* View Records Modal Scrollable */
+#viewRecordsModal {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+/* Payment Records Table */
+#recordsTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#recordsTable th,
+#recordsTable td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+
+#recordsTable th {
+  /* background: #f4f4f4; */
+  font-weight: bold;
+}
+
+/* Ensure Close Button is Visible */
+#viewRecordsModal button {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#viewRecordsModal button:hover {
+  background: #c0392b;
+}

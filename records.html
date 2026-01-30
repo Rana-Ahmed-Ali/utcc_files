@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Records</title>
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .sidebar {
+            width: 200px;
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            height: 100vh;
+            position: fixed;
+        }
+        .sidebar h2 {
+            text-align: center;
+        }
+        .sidebar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+        .content {
+            margin-left: 220px;
+            padding: 20px;
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Menu</h2>
+        <a href="records.html">Records</a>
+        <a href="add-expense.html">Add Expense</a>
+        <a href="add-transaction.html">Add Transaction</a>
+    </div>
+    <div class="content">
+        <h1>Records</h1>
+    <?php
+    $sql = "SELECT id, date, expense_type, expenses, note FROM expenses";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    echo "<table>";
+    echo "<tr><th>ID</th><th>Date</th><th>Expense Type</th><th>Expenses</th><th>Note</th></tr>";
+
+    // Output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "<tr><td>" . $row["id"]. "</td><td>" . $row["date"]. "</td><td>" . $row["expense_type"]. "</td><td>" . $row["expenses"]. "</td><td>" . $row["note"]. "</td></tr>";
+    }
+
+    echo "</table>";
+} else {
+    echo "0 results";
+}
+
+// Close connection
+$conn->close();
+?>
+    </div>
+</body>
+</html>

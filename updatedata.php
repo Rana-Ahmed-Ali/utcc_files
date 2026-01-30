@@ -1,0 +1,104 @@
+<?php
+// Get form data
+$stu_id = $_POST['id'];
+$stu_roll_no = $_POST['roll_no'];
+$stu_name = $_POST['name'];
+$stu_father_name = $_POST['father_name'];
+$stu_gender = $_POST['gender'];
+$stu_phone_personal = $_POST['phone_personal'];
+$stu_phone_home = $_POST['phone_home'];
+$stu_phone_relatives = $_POST['phone_relatives'];
+$stu_address = $_POST['address'];
+$stu_email = $_POST['email'];
+$stu_date_of_birth = $_POST['date_of_birth'];
+$stu_blood_group_id = $_POST['blood_group_id'];
+$stu_qualification_id = $_POST['qualification_id'];
+$stu_course_id = $_POST['course_id'];
+$stu_class_time_id = $_POST['class_time_id'];
+$stu_course_duration_id = $_POST['course_duration_id'];
+$stu_status_id = $_POST['status_id'];
+$stu_remaining_fees = $_POST['remaining_fees'];
+
+include 'db_connection.php';
+
+$upload_dir = 'uploads/';
+$picture = "";
+
+// Handle file upload
+if (!empty($_FILES['pic']['name'])) {
+    $picture = time() . "_" . basename($_FILES['pic']['name']); // Rename file to avoid conflicts
+    $picture_temp = $_FILES['pic']['tmp_name'];
+    $target_path = $upload_dir . $picture;
+
+    if (move_uploaded_file($picture_temp, $target_path)) {
+        // Remove old image from the server (optional)
+        $old_img_query = "SELECT pic FROM student_info WHERE roll_no = '$stu_roll_no'";
+        $old_img_result = mysqli_query($conn, $old_img_query);
+
+        if ($old_img_result && mysqli_num_rows($old_img_result) > 0) {
+            $old_img_row = mysqli_fetch_assoc($old_img_result);
+            $old_img = $old_img_row['pic'];
+            if (!empty($old_img) && file_exists($upload_dir . $old_img)) {
+                unlink($upload_dir . $old_img); // Delete old image
+            }
+        }
+    } else {
+        echo "File upload failed!";
+        exit;
+    }
+}
+
+// SQL query
+if (!empty($picture)) {
+    $sql = "UPDATE student_info SET 
+                name = '$stu_name',
+                father_name = '$stu_father_name',
+                gender = '$stu_gender',
+                phone_personal = '$stu_phone_personal',
+                phone_home = '$stu_phone_home',
+                phone_relatives = '$stu_phone_relatives',
+                address = '$stu_address',
+                email = '$stu_email',
+                date_of_birth = '$stu_date_of_birth',
+                blood_group_id = '$stu_blood_group_id',
+                qualification_id = '$stu_qualification_id',
+                course_id = '$stu_course_id',
+                class_time_id = '$stu_class_time_id',
+                course_duration_id = '$stu_course_duration_id',
+                status_id = '$stu_status_id',
+                RemainingFees = '$stu_remaining_fees',
+                pic = '$picture'
+            WHERE roll_no = '$stu_roll_no'";
+} else {
+    $sql = "UPDATE student_info SET 
+                name = '$stu_name',
+                father_name = '$stu_father_name',
+                gender = '$stu_gender',
+                phone_personal = '$stu_phone_personal',
+                phone_home = '$stu_phone_home',
+                phone_relatives = '$stu_phone_relatives',
+                address = '$stu_address',
+                email = '$stu_email',
+                date_of_birth = '$stu_date_of_birth',
+                blood_group_id = '$stu_blood_group_id',
+                qualification_id = '$stu_qualification_id',
+                course_id = '$stu_course_id',
+                class_time_id = '$stu_class_time_id',
+                course_duration_id = '$stu_course_duration_id',
+                status_id = '$stu_status_id',
+                RemainingFees = '$stu_remaining_fees'
+            WHERE roll_no = '$stu_roll_no'";
+}
+
+// Execute query
+$result = mysqli_query($conn, $sql);
+
+if ($result) {
+    header("Location: index.php");
+    exit;
+} else {
+    echo "Update failed: " . mysqli_error($conn);
+}
+
+mysqli_close($conn);
+?>

@@ -1,0 +1,234 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/* Style the filter dropdowns */
+#filter-table th select {
+    font-size: 14px;
+    padding: 8px;
+    border: 1px solid #555;
+    border-radius: 50px;
+    background-color: #444;
+    color: #fff;
+}
+
+/* Adjust the appearance of the selected option */
+#filter-table th select option {
+    background-color: #555;
+    color: #fff;
+}
+
+/* Style the filter button */
+#filter-table th button {
+    font-size: 14px;
+    padding: 8px 15px;
+    border: 1px solid #1abc9c;
+    border-radius: 5px;
+    background-color: #1abc9c;
+    color: #fff;
+    cursor: pointer;
+}
+
+#filter-table th button:hover {
+    background-color: #333;
+}
+
+.search-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+}
+
+body {
+    /* font-family: 'Helvetica Neue', Arial, sans-serif; */
+    /* font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
+    background-color: #f7f7f7;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    /* Limit the height to 90% of the viewport height */
+    overflow-y: auto;
+    /* Make the popup scrollable if the content overflows */
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+    position: sticky;
+    top: -20px;
+    background-color: currentColor;
+    box-shadow: #3333333b 0px 0px 10px;
+    border-radius: inherit;
+}
+
+.popup-header h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #444;
+}
+
+.popup-close {
+    display: inline-block;
+    padding: 1px;
+    /* background-color: #444; */
+    /* color: #fff; */
+    /* text-decoration: none; */
+    border-radius: 50%;
+    font-size: 28px;
+    line-height: 18px;
+}
+
+.popup-close:hover {
+    color: red;
+    background-color: black;
+}
+
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popup-main {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.popup-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.popup-image {
+    width: 250px;
+    height: 250px;
+    border-radius: 5%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+}
+
+.popup-details {
+    flex: 2;
+    width: 100%;
+}
+
+.popup-section {
+    margin-bottom: 20px;
+    width: -webkit-fill-available;
+
+}
+
+.popup-section h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+    color: #333;
+}
+
+.popup-detail {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.popup-detail .label {
+    font-weight: bold;
+    color: #555;
+}
+
+.popup-detail .value {
+    color: #333;
+}
+
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+.submit {
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 7px 15px;
+    color: #fff;
+    background-color: transparent;  
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s, transform 0.2s; /* Add a transition for button effects */
+  }
+.submit:hover{
+    color: greenyellow;
+}
+@media (max-width: 768px) {
+    .popup-main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .popup-image-container {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .popup-image {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+.td-img{
+    border-radius: 50%;
+}
+
+.tr-main{
+    border-bottom: 1px solid #bac4c853;
+}
+.td-m1{
+    border-right: 1px solid #bac4c853;
+}
+thead{
+    border-radius: 10%;
+}
+
+.edit-btn{
+    color: #1abc9c;
+}
+td:nth-child(11){
+    padding: 0px !important;
+}
+.fa-eye{
+    font-size: large;
+}
