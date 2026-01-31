@@ -9,6 +9,10 @@ include 'db_connection.php';
 
         <!-- Personal Information -->
         <div class="form-group">
+            <label>Roll No</label>
+            <input type="text" name="roll_no" placeholder="Leave empty to auto-generate" />
+        </div>
+        <div class="form-group">
             <label>Name</label>
             <input type="text" name="name" required />
         </div>
@@ -53,7 +57,10 @@ include 'db_connection.php';
             <input type="date" name="date_of_birth" />
         </div>
         
-        <input type="hidden" name="admission_date" value="<?php echo date('Y-m-d'); ?>" />
+        <div class="form-group">
+            <label>Admission Date</label>
+            <input type="date" name="admission_date" value="<?php echo date('Y-m-d'); ?>" />
+        </div>
 
         <div class="form-group">
             <label>Picture</label>

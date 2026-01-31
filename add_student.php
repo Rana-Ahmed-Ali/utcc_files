@@ -55,12 +55,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         move_uploaded_file($fingerprint_temp, $fingerprint_folder);
     }
 
-    // Generate roll number
-    $currentYear = date('y');
-    $result = mysqli_query($conn, "SELECT COUNT(*) as count FROM student_info WHERE roll_no LIKE '$currentYear/%'");
-    $row = mysqli_fetch_assoc($result);
-    $nextNumber = $row['count'] + 1;
-    $roll_no = "$currentYear/$nextNumber";
+    // Handle Roll Number
+    if (isset($_POST['roll_no']) && !empty(trim($_POST['roll_no']))) {
+        $roll_no = mysqli_real_escape_string($conn, $_POST['roll_no']);
+    } else {
+        // Generate roll number
+        $currentYear = date('y');
+        $result = mysqli_query($conn, "SELECT COUNT(*) as count FROM student_info WHERE roll_no LIKE '$currentYear/%'");
+        $row = mysqli_fetch_assoc($result);
+        $nextNumber = $row['count'] + 1;
+        $roll_no = "$currentYear/$nextNumber";
+    }
 
     // Retrieve the course fee for the selected course
     $courseFeeQuery = "SELECT fees FROM courses WHERE id = '$course_id'";
