@@ -11,6 +11,7 @@ $stu_phone_relatives = $_POST['phone_relatives'];
 $stu_address = $_POST['address'];
 $stu_email = $_POST['email'];
 $stu_date_of_birth = $_POST['date_of_birth'];
+$stu_admission_date = $_POST['admission_date'];
 $stu_blood_group_id = $_POST['blood_group_id'];
 $stu_qualification_id = $_POST['qualification_id'];
 $stu_course_id = $_POST['course_id'];
@@ -37,7 +38,7 @@ if (!empty($_FILES['pic']['name'])) {
         $picture = $target_path; // Store full path for DB
 
         // Remove old image from the server (optional)
-        $old_img_query = "SELECT pic FROM student_info WHERE roll_no = '$stu_roll_no'";
+        $old_img_query = "SELECT pic FROM student_info WHERE id = '$stu_id'";
         $old_img_result = mysqli_query($conn, $old_img_query);
 
         if ($old_img_result && mysqli_num_rows($old_img_result) > 0) {
@@ -57,6 +58,7 @@ if (!empty($_FILES['pic']['name'])) {
 // SQL query
 if (!empty($picture)) {
     $sql = "UPDATE student_info SET 
+                roll_no = '$stu_roll_no',
                 name = '$stu_name',
                 father_name = '$stu_father_name',
                 gender = '$stu_gender',
@@ -66,6 +68,7 @@ if (!empty($picture)) {
                 address = '$stu_address',
                 email = '$stu_email',
                 date_of_birth = '$stu_date_of_birth',
+                admission_date = '$stu_admission_date',
                 blood_group_id = '$stu_blood_group_id',
                 qualification_id = '$stu_qualification_id',
                 course_id = '$stu_course_id',
@@ -74,9 +77,10 @@ if (!empty($picture)) {
                 status_id = '$stu_status_id',
                 RemainingFees = '$stu_remaining_fees',
                 pic = '$picture'
-            WHERE roll_no = '$stu_roll_no'";
+            WHERE id = '$stu_id'";
 } else {
     $sql = "UPDATE student_info SET 
+                roll_no = '$stu_roll_no',
                 name = '$stu_name',
                 father_name = '$stu_father_name',
                 gender = '$stu_gender',
@@ -86,6 +90,7 @@ if (!empty($picture)) {
                 address = '$stu_address',
                 email = '$stu_email',
                 date_of_birth = '$stu_date_of_birth',
+                admission_date = '$stu_admission_date',
                 blood_group_id = '$stu_blood_group_id',
                 qualification_id = '$stu_qualification_id',
                 course_id = '$stu_course_id',
@@ -93,7 +98,7 @@ if (!empty($picture)) {
                 course_duration_id = '$stu_course_duration_id',
                 status_id = '$stu_status_id',
                 RemainingFees = '$stu_remaining_fees'
-            WHERE roll_no = '$stu_roll_no'";
+            WHERE id = '$stu_id'";
 }
 
 // Execute query

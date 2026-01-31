@@ -37,7 +37,7 @@ include 'header.php';
                     </div>
                     <div class="form-group">
                         <label for="roll_no">Roll No</label>
-                        <input type="text" name="roll_no" value="<?php echo $row['roll_no']; ?>" readonly/>
+                        <input type="text" name="roll_no" value="<?php echo $row['roll_no']; ?>" />
                     </div>
                     <div class="form-group">
                         <label for="name">Name</label>
@@ -78,6 +78,10 @@ include 'header.php';
                     <div class="form-group">
                         <label for="date_of_birth">Date of Birth</label>
                         <input type="date" name="date_of_birth" value="<?php echo $row['date_of_birth']; ?>" />
+                    </div>
+                    <div class="form-group">
+                        <label for="admission_date">Admission Date</label>
+                        <input type="date" name="admission_date" value="<?php echo $row['admission_date']; ?>" />
                     </div>
                     <div class="form-group">
                         <label for="blood_group_id">Blood Group</label>
@@ -175,14 +179,7 @@ include 'header.php';
                         }
                         ?>
                     </div>
-                    <!-- <div class="form-group">
-                        <label for="remaining_fees">Remaining Fees</label>
-                        <input type="number" name="remaining_fees" value="<?php echo $row['remaining_fees']; ?>" step="0.01" />
-                    </div> -->
-                    <!--<div class="form-group">-->
-                    <!--    <label for="remaining_fees">Remaining Fees</label>-->
-                    <!--    <input type="number" name="remaining_fees" value="<?php echo $row['RemainingFees']; ?>" step="0.01" />-->
-                    <!--</div>-->
+                    <input type="hidden" name="remaining_fees" value="<?php echo $row['RemainingFees']; ?>" />
                     <div class="form-group">
                         <label for="picture">Picture</label>
                         <input type="file" name="pic" />
