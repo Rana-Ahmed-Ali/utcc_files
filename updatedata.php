@@ -21,16 +21,21 @@ $stu_remaining_fees = $_POST['remaining_fees'];
 
 include 'db_connection.php';
 
-$upload_dir = 'uploads/';
+$upload_dir = 'uploads/pictures/';
+if (!file_exists($upload_dir)) {
+    mkdir($upload_dir, 0777, true);
+}
 $picture = "";
 
 // Handle file upload
 if (!empty($_FILES['pic']['name'])) {
-    $picture = time() . "_" . basename($_FILES['pic']['name']); // Rename file to avoid conflicts
+    $picture_name = time() . "_" . basename($_FILES['pic']['name']); // Rename file to avoid conflicts
     $picture_temp = $_FILES['pic']['tmp_name'];
-    $target_path = $upload_dir . $picture;
+    $target_path = $upload_dir . $picture_name;
 
     if (move_uploaded_file($picture_temp, $target_path)) {
+        $picture = $target_path; // Store full path for DB
+
         // Remove old image from the server (optional)
         $old_img_query = "SELECT pic FROM student_info WHERE roll_no = '$stu_roll_no'";
         $old_img_result = mysqli_query($conn, $old_img_query);
@@ -38,8 +43,9 @@ if (!empty($_FILES['pic']['name'])) {
         if ($old_img_result && mysqli_num_rows($old_img_result) > 0) {
             $old_img_row = mysqli_fetch_assoc($old_img_result);
             $old_img = $old_img_row['pic'];
-            if (!empty($old_img) && file_exists($upload_dir . $old_img)) {
-                unlink($upload_dir . $old_img); // Delete old image
+            // Check if file exists treating DB value as relative path
+            if (!empty($old_img) && file_exists($old_img)) {
+                unlink($old_img); // Delete old image
             }
         }
     } else {

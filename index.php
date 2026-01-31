@@ -1,6 +1,6 @@
 <?php
 // --- CONFIGURATION ---
-$maintenance_mode = true; // Set to true to ENABLE, false to DISABLE
+$maintenance_mode = false; // Set to true to ENABLE, false to DISABLE
 $maintenance_file = 'maintenance.html';
 // $admin_ip = '223.123.77.150'; // Your specific IP address
 

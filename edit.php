@@ -185,7 +185,7 @@ include 'header.php';
                     <!--</div>-->
                     <div class="form-group">
                         <label for="picture">Picture</label>
-                        <input type="file" name="picture" />
+                        <input type="file" name="pic" />
                         <?php if (!empty($row['pic'])): ?>
                             <img src="<?php echo $row['pic']; ?>" alt="Student Picture" class="td-img" width=100 height=100>
                         <?php endif; ?>
